@@ -13,9 +13,15 @@ namespace AudioAdmin.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IConfiguration _config;
+        private readonly IHostingEnvironment _env;
+        private readonly string _dbconnect;
+
+        public Startup(IConfiguration config, IHostingEnvironment env)
         {
-            Configuration = configuration;
+            _config = config;
+            _env = env;
+            _dbconnect = _config["dbconnect4"];
         }
 
         public IConfiguration Configuration { get; }
@@ -23,6 +29,16 @@ namespace AudioAdmin.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (_env.IsDevelopment())
+            {
+                /* Alternative: for connection string from config.json (not a sercure configuraion)
+                services.AddDbContext<ProductImageDbContext>(options =>
+                options.UseMySql(_config.GetConnectionString("dbconnect"))); */
+
+                services.AddDbContext<AudioDbContext>(options =>
+                options.UseMySql(_dbconnect));
+            }
+
             services.AddMvc();
         }
 
