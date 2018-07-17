@@ -41,6 +41,8 @@ namespace AudioAdmin.API
                 options.UseMySql(_dbconnect));
             }
 
+            services.AddTransient<AudioImageSeeder>();
+
             services.AddMvc();
         }
 

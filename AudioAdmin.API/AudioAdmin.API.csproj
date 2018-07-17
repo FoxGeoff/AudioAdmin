@@ -8,7 +8,6 @@
   <ItemGroup>
     <Folder Include="Data\Dtos\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Resources\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
