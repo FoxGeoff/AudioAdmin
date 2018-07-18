@@ -1,5 +1,8 @@
-﻿using AudioAdmin.API.Data.Entities;
+﻿using AudioAdmin.API.Data.Dtos;
+using AudioAdmin.API.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,6 +22,21 @@ namespace AudioAdmin.API.Data
             _hosting = hosting;
         }
 
+        public static void InitializeData(IServiceProvider services, ILoggerFactory loggerFactory)
+        {
+            var logger = loggerFactory.CreateLogger("SampleData");
+
+            using (var serviceScope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var env = serviceScope.ServiceProvider.GetService<IHostingEnvironment>();
+                if (!env.IsDevelopment()) { return; }
+
+                var seederManager = serviceScope.ServiceProvider.GetRequiredService<AudioImageSeeder>();
+                seederManager.Seed();
+                logger.LogInformation($"==> Seed Product data has been added to the development database");
+            }
+        }
+
         public void Seed()
         {
             
@@ -26,8 +44,9 @@ namespace AudioAdmin.API.Data
             {
                 var filepath = Path.Combine(_hosting.ContentRootPath, "Resources/product_images.json");
                 var json = File.ReadAllText(filepath);
-                var productImages = JsonConvert.DeserializeObject<IEnumerable<ProductImage>>(json);
-                productImages = ConvertImagesBase64ToBinary(productImages);
+                var product_images = JsonConvert.DeserializeObject<IEnumerable<product_image>>(json);
+                var productImages = ConvertToProductImage(product_images);
+                //productImages = ConvertImagesBase64ToBinary(productImages);
                 _context.ProductImages.AddRange(productImages);
                 _context.SaveChanges();
             }
@@ -40,7 +59,7 @@ namespace AudioAdmin.API.Data
             ////    _context.Products.AddRange(products);
             ////    _context.SaveChanges();
             ////}
-            
+
 
             //TODO: fix customer data file
             ////if (!_context.Customers.Any())
@@ -54,13 +73,49 @@ namespace AudioAdmin.API.Data
             ////}
         }
 
+        // Used to read snake variable names from a JSON file
+        private IEnumerable<ProductImage> ConvertToProductImage(IEnumerable<product_image> product_images)
+        {
+            var productImages =  new List<ProductImage>();
+
+            foreach (var prod in product_images)
+            {
+                var productImage = new ProductImage
+                {
+                    Id = prod.id,
+                    DateUpdated = prod.date_updated,
+                    FileName = prod.file_name,
+                    ImageFull = prod.image_full,
+                    ImageThumb = prod.image_thumb 
+                };
+
+                productImages.Add(productImage);
+            }
+
+            return productImages;
+        }
+
+        // TODO: Remove no references
+        private byte[] TrimByteArray(byte[] data)
+        {
+            bool data_found = false;
+            byte[] new_data = data.Reverse().SkipWhile(point =>
+            {
+                if (data_found) return false;
+                if (point == 0xff) return true; else { data_found = true; return false; } //0x00
+            }).Reverse().ToArray();
+
+            return new_data;
+        }
+
         /* The seed file is .Json this method ensures
          * that the string representation is stored in 
          * the database as a binary image and not text
          * to match the legacy data
          */
 
-        public IEnumerable<ProductImage> ConvertImagesBase64ToBinary(IEnumerable<ProductImage> productImages)
+        // TODO: Remove no references
+        private IEnumerable<ProductImage> ConvertImagesBase64ToBinary(IEnumerable<ProductImage> productImages)
         {
             foreach (var product in productImages)
             {
@@ -76,7 +131,8 @@ namespace AudioAdmin.API.Data
             return productImages;
         }
 
-        public IEnumerable<Customer> ConvertImagesBase64ToBinary(IEnumerable<Customer> customerImages)
+        // TODO: Remove no references
+        private IEnumerable<Customer> ConvertImagesBase64ToBinary(IEnumerable<Customer> customerImages)
         {
             foreach (var customer in customerImages)
             {

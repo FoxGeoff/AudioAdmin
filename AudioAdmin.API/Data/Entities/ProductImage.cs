@@ -22,12 +22,12 @@ namespace AudioAdmin.API.Data.Entities
         [Column("file_name", TypeName = "varchar(50)")]
         public string FileName { get; set; }
 
-        [MaxLength(50000)]
+        [MaxLength(65535)]
         [Display(Name = "Thumb")]
         [Column("image_thumb", TypeName = "blob")]
         public byte[] ImageThumb { get; set; }
 
-        [MaxLength(150000)]
+        [MaxLength(16777215)]
         [Display(Name = "Image")]
         [Column("image_full", TypeName = "mediumblob")]
         public byte[] ImageFull { get; set; }
