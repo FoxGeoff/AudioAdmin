@@ -46,7 +46,6 @@ namespace AudioAdmin.API.Data
                 var json = File.ReadAllText(filepath);
                 var product_images = JsonConvert.DeserializeObject<IEnumerable<product_image>>(json);
                 var productImages = ConvertToProductImage(product_images);
-                //productImages = ConvertImagesBase64ToBinary(productImages);
                 _context.ProductImages.AddRange(productImages);
                 _context.SaveChanges();
             }
@@ -60,17 +59,20 @@ namespace AudioAdmin.API.Data
             ////    _context.SaveChanges();
             ////}
 
+            if (!_context.Customers.Any())
+            {
+                var filepath = Path.Combine(_hosting.ContentRootPath, "Resources/customers_one.json");
+                var json = File.ReadAllText(filepath);
+                var customers = JsonConvert.DeserializeObject<IEnumerable<Customer>>(json);
+                IEnumerable<Customer> Customers = ConvertTocustomer(customers);
+                _context.Customers.AddRange(customers);
+                //_context.SaveChanges();
+            }
+        }
 
-            //TODO: fix customer data file
-            ////if (!_context.Customers.Any())
-            ////{
-            ////    var filepath = Path.Combine(_hosting.ContentRootPath, "Data/customers_one.json");
-            ////    var json = File.ReadAllText(filepath);
-            ////    var customers = JsonConvert.DeserializeObject<IEnumerable<Customer>>(json);
-            ////    customers = ConvertImagesBase64ToBinary(customers);
-            ////    _context.Customers.AddRange(customers);
-            ////    _context.SaveChanges();
-            ////}
+        private IEnumerable<Customer> ConvertTocustomer(IEnumerable<Customer> customers)
+        {
+            throw new NotImplementedException();
         }
 
         // Used to read snake variable names from a JSON file
@@ -130,24 +132,6 @@ namespace AudioAdmin.API.Data
 
             return productImages;
         }
-
-        // TODO: Remove no references
-        private IEnumerable<Customer> ConvertImagesBase64ToBinary(IEnumerable<Customer> customerImages)
-        {
-            foreach (var customer in customerImages)
-            {
-                var imageString = Convert.ToBase64String(customer.Password);
-                var imageArray = Convert.FromBase64String(imageString);
-                customer.Password = imageArray;
-
-                var imageTaxId = Convert.ToBase64String(customer.TaxIdImage);
-                var imageArrayThb = Convert.FromBase64String(imageString);
-                customer.TaxIdImage = imageArrayThb;
-            }
-
-            return customerImages;
-        }
-
 
         public string ReadImageFile(string path)
         {
