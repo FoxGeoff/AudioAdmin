@@ -83,25 +83,16 @@ namespace AudioAdmin.API.Data.Dtos
 
         public bool is_registered_to_c4 { get; set; }
 
-        //TODO add default value = null OR make DateTime? (better)
-        [Column("date_added", TypeName = "date")]
         public DateTime date_added { get; set; }
 
-        [Column("small_note", TypeName = "varchar(255)")]
         public string small_note { get; set; }
 
-        [Column("notes", TypeName = "text")]
         public string notes { get; set; }
 
-        [Column("tax_id_image", TypeName = "mediumblob")]
         public byte[] tax_id_image { get; set; }
-
         //CURENT_TIMESTAMP()
-        [Column("created_at", TypeName = "timestamp")]
         public DateTimeOffset? created_at { get; set; }
-
         //CURENT_TIMESTAMP ON UPDATE CURENT_TIMESTAMP()
-        [Column("updated_at", TypeName = "timestamp")]
         public DateTimeOffset? updated_at { get; set; }
     }
 
