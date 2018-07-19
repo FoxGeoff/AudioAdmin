@@ -10,9 +10,10 @@ using System;
 namespace AudioAdmin.API.Migrations
 {
     [DbContext(typeof(AudioDbContext))]
-    partial class AudioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180718235528_CustomerDb")]
+    partial class CustomerDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

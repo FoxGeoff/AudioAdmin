@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AudioAdmin.API.Data.Entities
 {
-    public class Customer : AuditableEntity
+    public class Customer    //: AuditableEntity
     {
         [Column("id", TypeName = "int(10)")]
         public int Id { get; set; }
