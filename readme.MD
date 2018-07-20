@@ -21,4 +21,10 @@ https://mva.microsoft.com/en-US/training-courses/mastering-angular-part-1-compon
 
 # AudioAdmin.SPA #
 
-```E:\GitHub2018\AudioAdmin\AudioAdmin.SPA>ng new AudioAdmin --prefix nga --routing```
+## Generate initial project ##
+
+```
+//E:\GitHub2018\AudioAdmin\AudioAdmin.SPA
+>ng new AudioAdmin.SPA --prefix nga --routing
+```
+## ## 

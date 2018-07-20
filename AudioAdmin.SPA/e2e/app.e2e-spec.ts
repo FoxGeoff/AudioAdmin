@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('audio-admin App', () => {
+describe('audio-admin.spa App', () => {
   let page: AppPage;
 
   beforeEach(() => {
