@@ -13,5 +13,12 @@
 
 ![GitHub Logo](/AudioAdmin.API/Resources/CustomerTable.png)
 
-Fix for Error:"Invalid length for a Base-64 char array"
+## Fix for Error:"Invalid length for a Base-64 char array" ##
  https://stackoverflow.com/questions/2925729/invalid-length-for-a-base-64-char-array#2925959
+
+## Mastering Angular ##
+https://mva.microsoft.com/en-US/training-courses/mastering-angular-part-1-components-17709?l=vZkWx6Y2D_8011787177
+
+# AudioAdmin.SPA #
+
+```E:\GitHub2018\AudioAdmin\AudioAdmin.SPA>ng new AudioAdmin --prefix nga --routing```

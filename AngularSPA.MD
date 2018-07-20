@@ -1,0 +1,1 @@
+```E:\GitHub2018\AudioAdmin\AudioAdmin.SPA>ng new AudioAdmin --prefix nga --routing```
