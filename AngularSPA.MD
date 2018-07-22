@@ -42,4 +42,110 @@ ng g c product-detail
 ng g c search
 ng g c stars
 ```
+1. Listing 2.18. The template of the navbar component (ERROR missing closing " on button)
+```
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/']">Audio Impact</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+
+    <span class=" navbar-toggler-icon "></span>
+
+  </button>
+
+  <div class="collapse navbar-collapse "
+    id="navbarSupportedContent ">
+    <ul class="navbar-nav mr-auto ">
+    <li class="nav-item active ">
+      <a class="nav-link " href="# ">Home <span class="sr-only ">(current)</span></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link " href="# ">About</a>
+    </li>
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle " href="# "
+         id="navbarDropdown " role="button "
+         data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
+         Services
+      </a>
+    <div class="dropdown-menu " aria-labelledby="navbarDropdown ">
+      <a class="dropdown-item " href="# ">Find products</a>
+      <a class="dropdown-item " href="# ">Place order</a>
+    <div class="dropdown-divider "></div>
+      <a class="dropdown-item " href="# ">Pay</a>
+    </div>
+    </li>
+    </ul>
+  </div>
+</nav>
+```
+1. Listing 2.19. The template of the search component
+```
+<form name="searchForm">
+  <div class="form-group">
+    <label for="productTitle">Product title:</label>
+    <input type="text" id="productTitle"
+      placeholder="Title" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="productPrice">Product price:</label>
+    <input id="productPrice"
+     name="productPrice" type="number" min="0"
+     placeholder="Price" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="productCategory">Product category:</label>
+    <select id="productCategory" class="form-control"></select>
+  </div>
+  <div class="form-group">
+    <button type="submit"
+    class="btn btn-primary btn-block">Search</button>
+  </div>
+</form>
+```
+1. Listing 2.20. The template of the footer component
+```
+<div class="container">
+  <hr>
+  <footer>
+   <div class="row">
+    <div class="col-lg-12">
+      <p>Copyright © ngAuction 2018</p>
+    </div>
+   </div>
+  </footer>
+</div>
+```
+1. Listing 2.21. The template of the carousel component
+```
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="http://placehold.it/800x300">
+    </div>
+  <div class="carousel-item">
+    <img class="d-block w-100" src="http://placehold.it/800x300">
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100" src="http://placehold.it/800x300">
+  </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel"
+   role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel"
+   role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+```
 
