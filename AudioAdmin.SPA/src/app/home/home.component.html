@@ -1,8 +1,10 @@
 <div class="row carousel-holder">
   <div class="col-md-12">
-  <nga-carrousel></nga-carrousel>
+    <nga-carrousel></nga-carrousel>
   </div>
 </div>
 <div class="row">
-  We'll render several ProductItem components here
+  <div *ngFor="let product of products" class="col-sm-4 col-lg-4 col-md-4">
+    <nga-product-item [product]="product"></nga-product-item>
+  </div>
 </div>

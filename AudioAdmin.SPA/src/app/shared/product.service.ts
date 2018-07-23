@@ -40,6 +40,38 @@ const products = [
     'rating': 3.5,
     'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     'categories': ['books']
+  },
+  {
+    'id': 2,
+    'title': 'Third Product',
+    'price': 245.99,
+    'rating': 5.0,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['books']
+  },
+  {
+    'id': 3,
+    'title': 'Fourth Product',
+    'price': 123.65,
+    'rating': 3.75,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['books']
+  },
+  {
+    'id': 4,
+    'title': 'Fifth Product',
+    'price': 4.67,
+    'rating': 1.5,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['books']
+  },
+  {
+    'id': 5,
+    'title': 'Sixth Product',
+    'price': 2000.11,
+    'rating': 4.0,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['books']
   }];
 
 

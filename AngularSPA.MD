@@ -225,3 +225,35 @@ const products = [
   }];
   }
 ```
+1. Listing 3.24. product-item.component.ts
+```
+import {Component, Input} from '@angular/core';
+import {Product} from '../shared/product.service';
+
+@Component({
+  selector: 'nga-product-item',
+  templateUrl: './product-item.component.html',
+  styleUrls: ['./product-item.component.css']
+})
+export class ProductItemComponent {
+
+  @Input() product: Product;
+}
+```
+1. Listing 3.25. product-item.component.html
+```
+<div class="thumbnail">
+  <img src="http://placehold.it/320x150">
+  <div class="caption">
+    <h4 class="float-right">{{product.price | currency}}</h4>
+    <h4><a [routerLink]="['/products', product.id]">{{product.title}}</a>
+    </h4>
+    <p>{{product.description}}</p>
+  </div>
+  <!--  <div class="ratings">
+    <nga-stars [rating]="product.rating"></nga-stars>
+  </div> -->
+</div>
+```
+1. Listing 3.26. home.component.ts Add DI products, productService
+1. Listing 3.27. home.component.html Add products
