@@ -31,7 +31,7 @@
         "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
 ```
-1. Generate the components
+1. Generate the components Listing 2.16:
 ```
 ng g c home
 ng g c carousel
@@ -42,6 +42,11 @@ ng g c product-detail
 ng g c search
 ng g c stars
 ```
+1. Generate the Product Service
+```
+ng g s shared/product
+```
+
 1. Listing 2.18. The template of the navbar component (ERROR missing closing " on button)
 ```
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -148,6 +153,25 @@ ng g c stars
   </a>
 </div>
 ```
+1. 2.7.8  The Home component
+```
+<div class="row carousel-holder">
+  <div class="col-md-12">
+  <nga-carousel></nga-carousel>
+  </div>
+</div>
+<div class="row">
+  We'll render several ProductItem components here
+</div>
+```
+1. Listing 2.27. Mapping an empty path to the home component (app-routing.module)
+```
+const routes: Routes = [
+  {
+  path: '', component: HomeComponent
+  }
+];
+```
 TIP How to set the default intergrated terminal window: 
 ```
 "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
@@ -155,3 +179,49 @@ OR
 "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
 ```
 # 3 Router basics #
+## 3.7  Hands-on: Adding navigation to the online auction ##
+```
+Listing 3.23. product.service.ts
+
+export class Product {
+  constructor(
+    public id: number,
+    public title: string,
+    public price: number,
+    public rating: number,
+    public description: string,
+    public categories: string[]) {
+  }
+}
+
+export class ProductService {
+
+  getProducts(): Product[] {
+    return products.map(p => new Product(p.id, p.title,
+      p.price, p.rating, p.description, p.categories));
+  }
+
+  getProductById(productId: number): Product {
+    return products.find(p => p.id === productId);
+  }
+}
+
+const products = [
+  {
+    'id': 0,
+    'title': 'First Product',
+    'price': 24.99,
+    'rating': 4.3,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['electronics', 'hardware']
+  },
+  {
+    'id': 1,
+    'title': 'Second Product',
+    'price': 64.99,
+    'rating': 3.5,
+    'description': 'This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    'categories': ['books']
+  }];
+  }
+```
