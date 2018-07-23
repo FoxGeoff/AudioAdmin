@@ -1,8 +1,8 @@
 # AudioAdmin.SPA #
 
-## Reference
+## Reference ##
 
-## Generate initial project Ref: 2.7.1##
+## Generate initial project Ref: 2.7.1 ##
 ```
 //E:\GitHub2018\AudioAdmin\AudioAdmin.SPA
 >ng new AudioAdmin.SPA --prefix nga --routing
@@ -148,4 +148,10 @@ ng g c stars
   </a>
 </div>
 ```
-
+TIP How to set the default intergrated terminal window: 
+```
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+OR
+"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+```
+# 3 Router basics #
