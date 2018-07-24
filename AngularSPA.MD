@@ -257,3 +257,20 @@ export class ProductItemComponent {
 ```
 1. Listing 3.26. home.component.ts Add DI products, productService
 1. Listing 3.27. home.component.html Add products
+
+## 3.7.4  StarsComponent ##
+
+1. Add ```npm i  material-design-icons``` (just icons)
+1. Or the full package:
+```npm install --save @angular/material @angular/cdk```   
+```npm install --save @angular/animations```...
+
+1. Add to angular.cli.json ```"styles": [
+  "styles.css",
+  "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "../node_modules/material-icons/css/material-design-icons.min.css"
+]```
+FIX: ```@import "../node_modules/material-design-icons/iconfont/material-icons.css";``` in styles.css
+1. Listing 3.31. stars.component.html
+1. Listing 3.32. stars.component.css
+1. Listing 3.33. Adding a div with the <nga-stars> component (ProductItemComponent)

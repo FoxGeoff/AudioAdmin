@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'nga-stars',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stars.component.css']
 })
 export class StarsComponent implements OnInit {
+  @Input() count = 5;
+  @Input() rating = 0;
+  stars: boolean[] = [];
 
   constructor() { }
 
   ngOnInit() {
-  }
+    for (let i = 1; i <= this.count; i++) {
 
+      this.stars.push(i > this.rating); // push true or false
+    }
+  }
 }
