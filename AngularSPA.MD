@@ -322,7 +322,7 @@ export class ProductDetailComponent implements OnInit {
 
 
 ## 4 Router advanced ##
-* This chapter covers: *
+**This chapter covers:**
 ```
 *    Guarding routes
 *    Creating components that have multiple router outlets
