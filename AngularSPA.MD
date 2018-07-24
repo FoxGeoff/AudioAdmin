@@ -26,6 +26,7 @@
 ```
 1. Add to scripts section of angular.cli.json
 ```
+```
 "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/popper.js/dist/umd/popper.min.js",
@@ -275,3 +276,7 @@ FIX: ```@import "../node_modules/material-design-icons/iconfont/material-icons.c
 1. Listing 3.31. stars.component.html
 1. Listing 3.32. stars.component.css
 1. Listing 3.33. Adding a div with the <nga-stars> component (ProductItemComponent)
+
+## It’s time to implement navigation with the Router. ##
+1. 3.7.5  ProductDetailComponent
+1. v
