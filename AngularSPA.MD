@@ -16,6 +16,7 @@
   "styles.css",
   "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 ]
+```
 *FIX in styles.css*
 ```
 /* You can add global styles to this file, and also import other style files */
