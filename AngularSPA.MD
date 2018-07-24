@@ -319,3 +319,12 @@ export class ProductDetailComponent implements OnInit {
 * You can configure routes in parent and child components.
 * You can pass data to routes during the navigation.
 * During the navigation, the router renders components in the area defined by the <router-outlet> tag.
+
+
+## 4 Router advanced ##
+* This chapter covers: *
+```
+*    Guarding routes
+*    Creating components that have multiple router outlets
+*    Lazy loading of modules
+```
