@@ -279,4 +279,43 @@ FIX: ```@import "../node_modules/material-design-icons/iconfont/material-icons.c
 
 ## It’s time to implement navigation with the Router. ##
 1. 3.7.5  ProductDetailComponent
-1. v
+1. Listing 3.35. app-routing.module.ts
+```
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'products/:productId', component: ProductDetailComponent }
+];
+```
+1. Listing 3.37. product-detail.component.ts
+```
+export class ProductDetailComponent implements OnInit {
+
+  product: Product;
+
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService) { }
+
+  ngOnInit() {
+    const prodId: number = parseInt(
+                   this.route.snapshot.params['productId']);
+    this.product = this.productService.getProductById(prodId);
+  }
+```
+1. Listing 3.38. product-detail.component.html
+```
+<div class="thumbnail">
+  <img src="http://placehold.it/820x320">
+  <div>
+    <h4 class="float-right">{{ product.price }}</h4>
+    <h4>{{ product.title }}</h4>
+    <p>{{ product.description }}</p>
+  </div>
+  <div class="ratings">
+    <p><nga-stars [rating]="product.rating"></nga-stars></p>
+  </div>
+</div>
+```
+## Summary ##
+* You can configure routes in parent and child components.
+* You can pass data to routes during the navigation.
+* During the navigation, the router renders components in the area defined by the <router-outlet> tag.
